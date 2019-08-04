@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Add RTL support to Mattermost",
   "license" : "MIT",
-  "private": true,
+  "repository": {
+	"type": "git",
+	"url": "git://github.com/gabay/mattermost-rtl-plugin.git"
+  },
   "scripts": {
     "build": "bash scripts/build.sh",
     "clear": "bash scripts/clear.sh"
