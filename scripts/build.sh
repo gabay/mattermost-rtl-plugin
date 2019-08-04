@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TARGET_DIR=gabay.mattermost-rtl-plugin
-TARGET=$(TARGET_DIR).tar.gz
+set TARGET_DIR=gabay.mattermost-rtl-plugin
+set TARGET=$(TARGET_DIR).tar.gz
 
 ./node_modules/.bin/webpack --mode=production
 
