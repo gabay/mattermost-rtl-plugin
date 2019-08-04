@@ -8,7 +8,7 @@ all: $(TARGET)
 clear:
 	rm -rf $(TARGET) $(TARGET_DIR)
 
-$TARGET: $(SOURCES)
+$(TARGET): $(SOURCES)
 	mkdir -p $(TARGET_DIR)
 	cp $^ $(TARGET_DIR)
 	tar -czf $@ $(TARGET_DIR)
