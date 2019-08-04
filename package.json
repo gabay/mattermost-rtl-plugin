@@ -2,12 +2,14 @@
   "name": "mattermost-rtl-plugin",
   "version": "1.0.0",
   "description": "Add RTL support to Mattermost",
+  "license" : "MIT",
+  "private": true,
   "scripts": {
-    "build": "make"
+    "build": "bash scripts/build.sh"
+    "clear": "bash scripts/clear.sh"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
-    "react": "^16.8.6"
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

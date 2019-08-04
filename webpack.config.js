@@ -33,9 +33,6 @@ module.exports = {
             },
         ],
     },
-    externals: {
-        react: 'React',
-    },
     output: {
         path: __dirname,
         publicPath: '/',
