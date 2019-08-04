@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 function isRTL(str) {
   // Hebrew = 0590-05FF, Arabic + Syriac + Samaritan + Mandaic = 0600-08FF
   // Ignore whitespaces, digits and @mentions

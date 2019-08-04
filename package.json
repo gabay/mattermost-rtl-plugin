@@ -12,7 +12,6 @@
     "clear": "bash scripts/clear.sh"
   },
   "dependencies": {
-    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
