@@ -24,8 +24,8 @@ function tryToSetup() {
 				
 		// Posts
 		setDirForEach($('#postListContent .post-message__text'));
-		const newPostObserver = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
-		newPostObserver.observe(document.getElementById('postListContent'), {childList: true});
+		const observer = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
+		observer.observe(document.getElementById('postListContent'), {subtree: true, childList: true});
 		return true;
 	}
 	return false;
