@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import $ from 'jquery';
 
 function isRTL(str) {
   // Hebrew = 0590—05FF, Arabic + Syriac + Samaritan + Mandaic = 0600—08FF
@@ -36,4 +36,4 @@ class RTLPlugin {
 	uninitialize(){}
 }
 
-window.registerPlugin('gabay.mattermost-plugin-rtl', new RTLPlugin());
+window.registerPlugin('gabay.mattermost-rtl-plugin', new RTLPlugin());

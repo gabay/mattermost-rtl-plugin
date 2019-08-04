@@ -1,4 +1,4 @@
-TARGET_DIR=gabay.mattermost-plugin-rtl
+TARGET_DIR=gabay.mattermost-rtl-plugin
 TARGET=$(TARGET_DIR).tar.gz
 
 SOURCES=src/index.js plugin.json
