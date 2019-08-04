@@ -12,31 +12,26 @@ function setDir(element, key) {
 	element.dir = isRTL(text) ? 'rtl' : 'ltr';
 }
 
-function setDirForEach(selector) {
-	selector.each((i, element) => setDir(element));
-}
-
-function tryToSetup() {
-	if (document.getElementById('post_textbox') && document.getElementById('postListContent')) {
-		// Textarea
-		setDirForEach($('#post_textbox'));
-		$('#post_textbox').keypress((e) => setDir(e.target, e.key));
-				
-		// Posts
-		setDirForEach($('#postListContent .post-message__text'));
-		const observer = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
-		observer.observe(document.getElementById('postListContent'), {subtree: true, childList: true});
-		return true;
+function update(mutationList, observer) {
+	// textarea
+	if (document.getElementById('post_textbox')) {
+		document.getElementById('post_textbox').onkeypress = (event => setDir(event.target, event.key));
 	}
-	return false;
+	for (let mutation of mutationList) {
+		for (let node of mutation.addedNodes) {
+			// posts
+			if (node.getElementsByClassName) {
+				for (let post of node.getElementsByClassName('post-message__text')) {
+					setDir(post);
+				}
+			}
+		}
+	}	
 }
 
 class RTLPlugin {
 	initialize(registry, store) {
-		const callback = (mutationList, observer) => {
-			if (tryToSetup()) observer.disconnect();
-		};
-		new MutationObserver(callback).observe(document.body, {subtree: true, childList: true});
+		new MutationObserver(update).observe(document.body, {subtree: true, childList: true});
 	}
 	uninitialize(){}
 }
