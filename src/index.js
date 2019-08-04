@@ -3,12 +3,12 @@ import $ from 'jquery'
 function isRTL(str) {
   // Hebrew = 0590—05FF, Arabic + Syriac + Samaritan + Mandaic = 0600—08FF
   // Ignore whitespaces, digits and @mentions
-  rtlRE = /^(\s|\d|@\S+)*[\u0590-\u08ff]/;
+  let rtlRE = /^(\s|\d|@\S+)*[\u0590-\u08ff]/;
   return rtlRE.test(str);
 }
 
 function setDir(element, key) {
-	text = element.textContent + (key ? key : '');
+	let text = element.textContent + (key ? key : '');
 	element.dir = isRTL(text) ? 'rtl' : 'ltr';
 }
 
@@ -25,7 +25,7 @@ class RTLPlugin {
 
 			// Posts
 			setDirForEach($('#postListContent .post-message__text'));
-			newPostObserver = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
+			let newPostObserver = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
 			newPostObserver.observe(document.getElementById('postListContent'), {childList: true});
 		});
     }
