@@ -32,4 +32,4 @@ class RTLPlugin {
 	uninitialize(){}
 }
 
-window.registerPlugin('earth.xr.mattermost-plugin-rtl', new RTLPlugin());
+window.registerPlugin('gabay.mattermost-plugin-rtl', new RTLPlugin());
