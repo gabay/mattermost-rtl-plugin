@@ -1,5 +1,3 @@
-var path = require('path');
-
 module.exports = {
     entry: [
         './src/index.js',
@@ -39,7 +37,7 @@ module.exports = {
         react: 'React',
     },
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: __dirname,
         publicPath: '/',
         filename: 'main.js',
     },

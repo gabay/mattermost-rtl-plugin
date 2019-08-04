@@ -1,14 +1,17 @@
 TARGET_DIR=gabay.mattermost-plugin-rtl
 TARGET=$(TARGET_DIR).tar.gz
 
-SOURCES=main.js plugin.json
+SOURCES=src/index.js plugin.json
+BUNDLE_SOURCES=main.js plugin.json
 
 all: $(TARGET)
 
 clear:
-	rm -rf $(TARGET) $(TARGET_DIR)
+	rm -f $(TARGET)
 
 $(TARGET): $(SOURCES)
+	./node_modules/.bin/webpack --mode=production
 	mkdir -p $(TARGET_DIR)
-	cp $^ $(TARGET_DIR)
+	cp $(BUNDLE_SOURCES) $(TARGET_DIR)
 	tar -czf $@ $(TARGET_DIR)
+	rm -rf $(TARGET_DIR)

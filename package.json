@@ -2,10 +2,7 @@
   "name": "mattermost-rtl-plugin",
   "version": "1.0.0",
   "description": "Add RTL support to Mattermost",
-  "scripts": {
-    "build": "./node_modules/.bin/webpack --mode=production"
-  },
-	"dependencies": {
+  "dependencies": {
     "jquery": "^3.4.1",
     "react": "^16.8.6"
   },
