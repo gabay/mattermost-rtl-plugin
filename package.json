@@ -5,7 +5,7 @@
   "license" : "MIT",
   "private": true,
   "scripts": {
-    "build": "bash scripts/build.sh"
+    "build": "bash scripts/build.sh",
     "clear": "bash scripts/clear.sh"
   },
   "dependencies": {
