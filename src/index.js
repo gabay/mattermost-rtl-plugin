@@ -17,18 +17,22 @@ function setDirForEach(selector) {
 }
 
 class RTLPlugin {
-    initialize(registry, store) {
-        $(document).ready(() => {
+	initialize(registry, store) {
+		$(document).ready(() => {
 			// Textarea
-			setDirForEach($('#post_textbox'));
-			$('#post_textbox').keypress((e) => setDir(e.target, e.key));
+			if (document.getElementById('post_textbox')) {
+				setDirForEach($('#post_textbox'));
+				$('#post_textbox').keypress((e) => setDir(e.target, e.key));
+			}
 
 			// Posts
-			setDirForEach($('#postListContent .post-message__text'));
-			let newPostObserver = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
-			newPostObserver.observe(document.getElementById('postListContent'), {childList: true});
+			if (document.getElementById('postListContent')) {
+				setDirForEach($('#postListContent .post-message__text'));
+				let newPostObserver = new MutationObserver((m, o) => setDirForEach($('#postListContent .post-message__text').not('[dir]')));
+				newPostObserver.observe(document.getElementById('postListContent'), {childList: true});
+			}
 		});
-    }
+	}
 	uninitialize(){}
 }
 
