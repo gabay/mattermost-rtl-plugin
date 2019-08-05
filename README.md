@@ -8,4 +8,4 @@ Automatically set text direction in Mattermost.
 
 2. `npm run build`
 
-3. upload `gabay.mattermost-rtl-plugin` to the system console
+3. upload `gabay.mattermost-rtl-plugin.tar.gz` to mattermost [as explained here](https://developers.mattermost.com/extend/plugins/webapp/hello-world/#installing-the-plugin).
