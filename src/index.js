@@ -1,8 +1,8 @@
 function isRTL(str) {
-  // Hebrew = 0590-05FF, Arabic + Syriac + Samaritan + Mandaic = 0600-08FF
-  // Ignore whitespaces, digits and @mentions
-  const rtlRE = /^(\s|\d|@\S+)*[\u0590-\u08ff]/;
-  return rtlRE.test(str);
+	// Hebrew = 0590-05FF, Arabic + Syriac + Samaritan + Mandaic = 0600-08FF
+	// Ignore whitespaces, digits and @mentions
+	const rtlRE = /^(\s|\d|@\S+)*[\u0590-\u08ff]/;
+	return rtlRE.test(str);
 }
 
 function setDir(element, key) {
@@ -11,10 +11,6 @@ function setDir(element, key) {
 }
 
 function update(mutationList, observer) {
-	// textarea
-	if (document.getElementById('post_textbox')) {
-		document.getElementById('post_textbox').onkeypress = (event => setDir(event.target, event.key));
-	}
 	for (let mutation of mutationList) {
 		for (let node of mutation.addedNodes) {
 			// posts
@@ -23,8 +19,14 @@ function update(mutationList, observer) {
 					setDir(post);
 				}
 			}
+			// text areas
+			if (node.getElementsByTagName) {
+				for (let post of node.getElementsByTagName('textarea')) {
+					post.onkeypress = (event => setDir(event.target, event.key));
+				}
+			}
 		}
-	}	
+	}
 }
 
 class RTLPlugin {
