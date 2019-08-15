@@ -22,6 +22,7 @@ function update(mutationList, observer) {
 			// text areas
 			if (node.getElementsByTagName) {
 				for (let post of node.getElementsByTagName('textarea')) {
+					setDir(post);
 					post.onkeypress = (event => setDir(event.target, event.key));
 				}
 			}
