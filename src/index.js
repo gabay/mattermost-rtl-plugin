@@ -1,12 +1,12 @@
 function isRTL(str) {
 	// Hebrew = 0590-05FF, Arabic + Syriac + Samaritan + Mandaic = 0600-08FF
-	// Ignore whitespaces, digits and @mentions
-	const rtlRE = /^(\s|\d|@\S+)*[\u0590-\u08ff]/;
+	// Ignore non-letters and @mentions
+	const rtlRE = /^([\0-\x40\x5b-\x60\x7b-\x7f]|@\S+)*[\u0590-\u08ff]/;
 	return rtlRE.test(str);
 }
 
 function elementText(e, txt) {
-	return txt ? e.textContent.substr(0, e.selectionStart) + t + e.textContent.substr(e.selectionEnd) : e.selectionStart;
+	return txt ? e.textContent.substr(0, e.selectionStart) + t + e.textContent.substr(e.selectionEnd) : e.textContent;
 }
 
 function setDir(element, newText) {
