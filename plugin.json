@@ -2,7 +2,7 @@
     "id": "gabay.mattermost-rtl-plugin",
     "name": "Mattermost RTL Plugin",
     "description": "Add RTL support to Mattermost",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "webapp": {
         "bundle_path": "main.js"
     },
