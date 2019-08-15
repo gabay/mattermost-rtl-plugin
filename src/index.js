@@ -5,12 +5,12 @@ function isRTL(str) {
 	return rtlRE.test(str);
 }
 
-function elementText(e, txt) {
-	return txt ? e.textContent.substr(0, e.selectionStart) + t + e.textContent.substr(e.selectionEnd) : e.textContent;
+function setDir(element) {
+	element.dir = isRTL(element.textContent) ? 'rtl' : 'ltr';
 }
 
-function setDir(element, newText) {
-	element.dir = isRTL(elementText(element, newText)) ? 'rtl' : 'ltr';
+function setDirDeferred(element) {
+	setTimeout(() => setDir(element), 0);
 }
 
 function setDirToSubtree(node) {
@@ -21,7 +21,7 @@ function setDirToSubtree(node) {
 	// text areas
 	for (let post of node.getElementsByTagName ? node.getElementsByTagName('textarea') : []) {
 		setDir(post);
-		post.onkeypress = (event => setDir(event.target, event.key));
+		post.onkeypress = (event => setDirDeferred(event.target));
 	}
 }
 
