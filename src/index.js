@@ -10,28 +10,29 @@ function setDir(element, key) {
 	element.dir = isRTL(text) ? 'rtl' : 'ltr';
 }
 
+function setDirToSubtree(node) {
+	// posts
+	for (let post of node.getElementsByClassName ? node.getElementsByClassName('post-message__text') : []) {
+		setDir(post);
+	}
+	// text areas
+	for (let post of node.getElementsByTagName ? node.getElementsByTagName('textarea') : []) {
+		setDir(post);
+		post.onkeypress = (event => setDir(event.target, event.key));
+	}
+}
+
 function update(mutationList, observer) {
 	for (let mutation of mutationList) {
 		for (let node of mutation.addedNodes) {
-			// posts
-			if (node.getElementsByClassName) {
-				for (let post of node.getElementsByClassName('post-message__text')) {
-					setDir(post);
-				}
-			}
-			// text areas
-			if (node.getElementsByTagName) {
-				for (let post of node.getElementsByTagName('textarea')) {
-					setDir(post);
-					post.onkeypress = (event => setDir(event.target, event.key));
-				}
-			}
+			setDirToSubtree(node);
 		}
 	}
 }
 
 class RTLPlugin {
 	initialize(registry, store) {
+		setDirToSubtree(document.body);
 		new MutationObserver(update).observe(document.body, {subtree: true, childList: true});
 	}
 	uninitialize(){}
