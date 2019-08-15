@@ -5,9 +5,12 @@ function isRTL(str) {
 	return rtlRE.test(str);
 }
 
-function setDir(element, key) {
-	const text = element.textContent + (key ? key : '');
-	element.dir = isRTL(text) ? 'rtl' : 'ltr';
+function elementText(e, txt) {
+	return txt ? e.textContent.substr(0, e.selectionStart) + t + e.textContent.substr(e.selectionEnd) : e.selectionStart;
+}
+
+function setDir(element, newText) {
+	element.dir = isRTL(elementText(element, newText)) ? 'rtl' : 'ltr';
 }
 
 function setDirToSubtree(node) {
